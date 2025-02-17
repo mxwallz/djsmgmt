@@ -1,0 +1,16 @@
+---
+format: json
+---
+
+
+{% parse_json data %}
+{
+  "term": "{{ context.params.term }}"
+}
+{% endparse_json %}
+
+{% graphql query = "get_jokes", data: term %}
+
+{% assign response = query.api_call_send.response.body | parse_json %}
+
+{{ response | json }}

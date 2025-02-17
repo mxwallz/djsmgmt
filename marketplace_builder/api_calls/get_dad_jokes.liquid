@@ -1,0 +1,12 @@
+---
+to: "https://icanhazdadjoke.com/search?term={{ data.term }}&format=json"
+format: http
+request_type: GET
+request_headers: '{
+  "Content-Type": "application/json"
+}'
+callback: >
+  {% log response, type: 'response object' %}
+  {% assign response_hash = response.body | parse_json %}
+  {% log response_hash, type: 'response body as hash' %}
+---

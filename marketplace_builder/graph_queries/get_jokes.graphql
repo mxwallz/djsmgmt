@@ -1,0 +1,14 @@
+mutation getDadJokes($data: String!) {
+  api_call_send(
+    data: $data
+    template: { name: "get_dad_jokes" }
+  ) {
+    response {
+      status
+      body # Remove field selections, return as raw JSON
+    }
+    errors {
+      message
+    }
+  }
+}
