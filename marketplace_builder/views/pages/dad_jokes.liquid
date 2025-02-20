@@ -1,16 +1,11 @@
 ---
+slug: dad_jokes
 format: json
+response_headers: >
+  {
+    "Content-Type": "application/json", 
+    "Accept": "application/json"
+  }
 ---
-
-
-{% parse_json data %}
-{
-  "term": "{{ context.params.term }}"
-}
-{% endparse_json %}
-
-{% graphql query = "get_jokes", data: term %}
-
-{% assign response = query.api_call_send.response.body | parse_json %}
-
-{{ response | json }}
+{% graphql result = 'api_calls/get_dad_jokes'%}
+{{ result.api_call_send.response.body }}

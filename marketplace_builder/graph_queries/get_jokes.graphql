@@ -1,11 +1,14 @@
-mutation getDadJokes($data: String!) {
+mutation getDadJokes($data: HashObject!) {
   api_call_send(
     data: $data
-    template: { name: "get_dad_jokes" }
+    template: { 
+      name: "get_dad_jokes", 
+    }
   ) {
     response {
       status
-      body # Remove field selections, return as raw JSON
+      body
+      headers
     }
     errors {
       message
